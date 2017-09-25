@@ -1,0 +1,35 @@
+html, body {
+    margin: 0;
+    width: 1280px;
+    height: 720px;
+    overflow: hidden;
+    position: relative;
+}
+
+.flex-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    background-color: red;
+    padding: 20px;
+    justify-content: center;
+}
+
+.flex-item {
+    background-color: cornflowerblue;
+    height: 100px;
+    margin: 10px;
+}
+
+.logos {
+    background-color: blue;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+.logo {
+    height: 100%;
+}
