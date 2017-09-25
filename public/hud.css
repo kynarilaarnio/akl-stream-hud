@@ -4,6 +4,9 @@ html, body {
     height: 720px;
     overflow: hidden;
     position: relative;
+    background-image: url("img/gameplay.png");
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .flex-container {
@@ -11,19 +14,15 @@ html, body {
     height: 100%;
     display: flex;
     flex-direction: row;
-    background-color: red;
-    padding: 20px;
     justify-content: center;
 }
 
 .flex-item {
-    background-color: cornflowerblue;
-    height: 100px;
+    height: 5vh;
     margin: 10px;
 }
 
 .logos {
-    background-color: blue;
     position: absolute;
     bottom: 0;
     left: 0;
