@@ -1,34 +1,45 @@
-const sock = io();
-let bomb_planted = false;
+var sock = io();
+
 var bombStartTime;
+var bombLeftTime;
 var bombTime;
+var bombPlantedTime;
 var timer = document.getElementById("timer");
 sock.on("message", function(data){
     console.log(data.phase_countdowns)
-    bombTime = parseFloat(data.phase_countdowns.phase_ends_in);
-    console.log(bombTime, bombStartTime);
+    if (data.phase_countdowns.phase == "bomb") {
+        bombTime = parseFloat(data.phase_countdowns.phase_ends_in);
+    }
+    if (data.phase_countdowns.phase == "over") {
+        // todo
+    }
     if (data.phase_countdowns.phase == "bomb" && bombStartTime == undefined){
-            bombStartTime = parseFloat(data.phase_countdowns.phase_ends_in);
-            timer.style.width = "0%";
+        bombStartTime = parseFloat(data.phase_countdowns.phase_ends_in);
+        console.log("planted", bombStartTime);
+        var d = new Date();
+        bombPlantedTime = d.getTime();
+        console.log("planted time", bombPlantedTime);
     }   
 });
 
 function createBombTimer(){
-    //var timer = document.getElementById("timer");
+
     setInterval(function(){
-        var asd = bombTime / bombStartTime * 100.0;
-        if (bombTime <= 5) {
+        //console.log("Left", bombLeftTime);
+
+        if (bombLeftTime <= 5) {
             timer.style.backgroundColor = "red";
-        } else if (bombTime <= 10) {
+        } else if (bombLeftTime <= 10) {
             timer.style.backgroundColor = "yellow";
         } else {
             timer.style.backgroundColor = "green";
         }
-        console.log(asd);
-        //timer.style.width = asd + "%";
-    }, 200)
+        var d = new Date();
+        var now = d.getTime();
+        bombLeftTime = bombStartTime - ((now - bombPlantedTime) / 1000);
+        timer.style.width = bombLeftTime / bombStartTime * 100  + "%";
+    }, 16);
 }
 document.addEventListener("DOMContentLoaded", function(event) {
-    console.log("DOM fully loaded and parsed");
     createBombTimer();
   });
