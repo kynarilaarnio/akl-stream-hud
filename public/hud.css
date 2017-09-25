@@ -34,18 +34,18 @@ html, body {
 }
 
 .bombtimer {
-    height: 20px;
+    height: 2vh;
     position: relative;
-    background-color: red;
 }
 
 .bombtimer > span {
     display: block;
     height: 100%;
-    background-color: blue;
+    background-color: green;
+    opacity: 0.4;
     position: relative;
     overflow: hidden;
-    transition: width 0.2s;
+    transition: width 40s;
     transition-timing-function: linear;
 
 }
