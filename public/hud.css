@@ -34,20 +34,20 @@ html, body {
 }
 
 .bombtimer-wrapper {
-    top: 6vh;
     text-align: center;
-    position: relative;
 }
 
 .bombtimer {
+    height: 0.8vh;
+    top: 5.8vh;
     width: 50vw;
-    height: 1vh;
     position: relative;
+    text-align: center;
     display: inline-block;
 }
 
 .bombtimer > span {
-    display: block;
+    display: inline-block;
     height: 100%;
     background-color: green;
     opacity: 0.6;
