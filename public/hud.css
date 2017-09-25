@@ -32,3 +32,20 @@ html, body {
 .logo {
     height: 100%;
 }
+
+.bombtimer {
+    height: 20px;
+    position: relative;
+    background-color: red;
+}
+
+.bombtimer > span {
+    display: block;
+    height: 100%;
+    background-color: blue;
+    position: relative;
+    overflow: hidden;
+    transition: width 0.2s;
+    transition-timing-function: linear;
+
+}
