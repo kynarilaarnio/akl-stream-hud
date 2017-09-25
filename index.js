@@ -1,29 +1,21 @@
-const http = require("http");
-fs = require("fs");
+const express = require("express");
+const app = express();
+const io = require("socket.io")(app);
 
-const port = 8080,
-  host = "127.0.0.1";
+app.use(express.static("public"))
 
-const server = http.createServer((req, res) => {
+app.get("/", function(req, res) {
   if (req.method == "POST") {
-    console.log("Handling POST request...");
     res.writeHead(200, { "Content-Type": "text/html" });
-
-    var body = "";
-    req.on("data", data => {
-      body += data;
-    });
-    req.on("end", () => {
-      console.log("POST payload: " + body);
-      res.end("");
-    });
-  } else {
-    console.log("Not expecting other request types...");
-    res.writeHead(200, { "Content-Type": "text/html" });
-    const html = "<html><body>HTTP Server at http://" + host + ":" + port + "</body></html>";
-    res.end(html);
+    io.sockets.emit(req.body)
   }
-});
+  else {
+    res.render("hud.html")
+  }
+})
 
-server.listen(port, host);
-console.log("Listening at http://" + host + ":" + port);
+app.listen(3000, function() {
+  console.log("Listening at http://" + host + ":" + port);
+})
+
+

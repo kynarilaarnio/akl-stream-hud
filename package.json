@@ -9,7 +9,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "node-csgo-gsi": "0.0.1"
+    "express": "^4.15.5",
+    "node-csgo-gsi": "0.0.1",
+    "socket.io": "^2.0.3"
   },
   "devDependencies": {
     "prettier": "^1.7.0"
