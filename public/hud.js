@@ -4,7 +4,9 @@ var bombStartTime;
 var bombLeftTime;
 var bombTime;
 var bombPlantedTime;
+var defuseStartTime;
 var timer = document.getElementById("timer");
+var defuse = document.getElementById("defuse");
 sock.on("message", function(data) {
   //console.log(data.phase_countdowns)
   if (data.phase_countdowns != null) {
@@ -19,15 +21,27 @@ sock.on("message", function(data) {
       }
     } else if (data.phase_countdowns.phase == "over") {
       bombStartTime = undefined;
+      defuseStartTime = undefined;
     } else if (data.phase_countdowns.phase == "freezetime") {
       timer.style.width = "0%";
+      defuse.style.width = "0%";
+    }
+    if (data.phase_countdowns.phase == "defuse" && defuseStartTime === undefined ) {
+        defuse.style.width = "100%"
+        defuse.style.transition = "width " + defuseStartTime + "s linear"
+        defuse.style.width = "0%"
+    } 
+    else if (data.phase_countdowns.phase == "bomb" && defuseStartTime !== undefined) {
+      defuseStartTime = undefined;
+      defuse.style.transition = "width 0s linear";
+      //defuse.style.width = "0%";
     }
   }
 });
 
 function createBombTimer() {
   setInterval(function() {
-    console.log("Left", bombLeftTime);
+    //console.log("Left", bombLeftTime);
 
     if (bombLeftTime <= 5) {
       timer.style.backgroundColor = "red";

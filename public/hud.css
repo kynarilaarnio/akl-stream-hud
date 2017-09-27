@@ -37,7 +37,7 @@ html, body {
     text-align: center;
 }
 
-.bombtimer {
+.timers {
     height: 0.8vh;
     top: 8vh;
     width: 50vw;
@@ -46,7 +46,7 @@ html, body {
     display: inline-block;
 }
 
-.bombtimer > span {
+.timers > #timer {
     display: inline-block;
     height: 100%;
     background-color: green;
@@ -57,4 +57,12 @@ html, body {
     /*transition: width 40s;*/
     transition-timing-function: linear;
 
+}
+.timers > #defuse {
+    display: inline-block;
+    height: 100%;
+    background-color: blue;
+    opacity: 0.6;
+    position: relative;
+    overflow: hidden;
 }
