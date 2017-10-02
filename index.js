@@ -13,9 +13,18 @@ io.on("connection", function(socket){
 
 })
 
-app.get("/", function(req, res) {
-  //res.sendFile("/hud.html");
+io.on("admin", function(data){
+  //handle ui change request and send it to all clients.
 })
+
+app.get("/", function(req, res) {
+  res.sendFile(__dirname + "/public/hud.html");
+})
+
+app.get("/admin", function(req, res){
+  res.sendFile(__dirname + "/public/admin.html")
+})
+
 app.post("*", function(req, res){
   res.sendStatus(200);
   //console.log(req.body);

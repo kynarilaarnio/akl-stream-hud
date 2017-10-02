@@ -8,7 +8,7 @@ var defuseStartTime;
 var timer = document.getElementById("timer");
 var defuse = document.getElementById("defuse");
 sock.on("message", function(data) {
-    console.log(data.phase_countdowns)
+  //console.log(data.phase_countdowns)
   if (data.phase_countdowns != null) {
     if (data.phase_countdowns.phase == "bomb") {
       bombTime = parseFloat(data.phase_countdowns.phase_ends_in);
@@ -36,6 +36,11 @@ sock.on("message", function(data) {
     }
   }
 });
+
+sock.on("admin", function(data){
+
+});
+
 
 function createBombTimer() {
   setInterval(function() {

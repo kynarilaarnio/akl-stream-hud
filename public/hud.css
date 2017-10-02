@@ -54,8 +54,6 @@ html, body {
     opacity: 0.6;
     position: relative;
     overflow: hidden;
-    /*transition: width 40s;*/
-    transition-timing-function: linear;
 
 }
 .timers > #defuse {
