@@ -78,8 +78,8 @@ html, body {
 .textboxes > textarea {
     border: none;
     font-size: 48px;
-    font-family: 'Jura', sans-serif;
     resize: none;
     overflow: hidden;
-    background-color: transparent; 
+    background-color: transparent;
+    font-family: "Raleway", "Jura", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
