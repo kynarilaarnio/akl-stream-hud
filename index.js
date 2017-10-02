@@ -9,14 +9,12 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(bodyParser.json());
 
 io.on("connection", function(socket){
-  //console.log(socket);
+  socket.on("admin", function(data){
+    io.sockets.emit("textbox", data);
+  })
+  
 
 })
-
-io.on("admin", function(data){
-  //handle ui change request and send it to all clients.
-})
-
 app.get("/", function(req, res) {
   res.sendFile(__dirname + "/public/hud.html");
 })

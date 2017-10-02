@@ -37,8 +37,9 @@ sock.on("message", function(data) {
   }
 });
 
-sock.on("admin", function(data){
-
+sock.on("textbox", function(data){
+  console.log(data);
+  document.getElementById(data.id).value = data.text;
 });
 
 

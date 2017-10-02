@@ -4,16 +4,27 @@
 <meta charset="UTF-8">
 <title>AKL stream HUD</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css?family=Jura" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="hud.css">
 </head>
 <body>
     <div class="bombtimer-wrapper">
         <div class="timers">
             <span id="timer" style="width: 0%"></span>
-            <br>
             <span id="defuse" style="width: 0%"></span>
         </div>
     </div>
+
+    <div class="textboxes" id="textboxes">
+        <textarea id="topleft" style="grid-column-start: 1; grid-column-end: 1; grid-row-start: 1; grid-row-end: 1;"></textarea>
+        <textarea id="top" style="grid-column-start: 2; grid-column-end: 2; grid-row-start: 1; grid-row-end: 1;"></textarea>
+        <textarea id="topright" style="grid-column-start: 3; grid-column-end: 3; grid-row-start: 1; grid-row-end: 1;"></textarea>
+        <textarea id="middleleft" style="grid-column-start: 1; grid-column-end: 1; grid-row-start: 2; grid-row-end: 2;"></textarea>
+        <textarea id="middleright" style="grid-column-start: 3; grid-column-end: 3; grid-row-start: 2; grid-row-end: 2;"></textarea>
+        <textarea id="bottomleft" style="grid-column-start: 1; grid-column-end: 1; grid-row-start: 3; grid-row-end: 3;"></textarea>
+        <textarea id="bottomright" style="grid-column-start: 3; grid-column-end: 3; grid-row-start: 3; grid-row-end: 3;"></textarea>
+    </div>
+
     <div class="logos">
         <div class="flex-container">
             <div class="flex-item">
