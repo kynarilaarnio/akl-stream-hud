@@ -8,7 +8,7 @@ var defuseStartTime;
 var timer = document.getElementById("timer");
 var defuse = document.getElementById("defuse");
 sock.on("message", function(data) {
-  //console.log(data.phase_countdowns)
+    console.log(data.phase_countdowns)
   if (data.phase_countdowns != null) {
     if (data.phase_countdowns.phase == "bomb") {
       bombTime = parseFloat(data.phase_countdowns.phase_ends_in);
@@ -21,20 +21,18 @@ sock.on("message", function(data) {
       }
     } else if (data.phase_countdowns.phase == "over") {
       bombStartTime = undefined;
-      defuseStartTime = undefined;
+      hideDefuseBar()
     } else if (data.phase_countdowns.phase == "freezetime") {
       timer.style.width = "0%";
-      defuse.style.width = "0%";
     }
     if (data.phase_countdowns.phase == "defuse" && defuseStartTime === undefined ) {
-        defuse.style.width = "100%"
+        defuse.style.visibility = "visible";
+        defuseStartTime = data.phase_countdowns.phase_ends_in;
         defuse.style.transition = "width " + defuseStartTime + "s linear"
         defuse.style.width = "0%"
     } 
     else if (data.phase_countdowns.phase == "bomb" && defuseStartTime !== undefined) {
-      defuseStartTime = undefined;
-      defuse.style.transition = "width 0s linear";
-      //defuse.style.width = "0%";
+      hideDefuseBar();
     }
   }
 });
@@ -59,3 +57,10 @@ function createBombTimer() {
 document.addEventListener("DOMContentLoaded", function(event) {
   createBombTimer();
 });
+
+function hideDefuseBar() {
+  defuseStartTime = undefined;
+  defuse.style.transition = "width 0s linear";
+  defuse.style.width = "100%";
+  defuse.style.visibility = "hidden";
+}
