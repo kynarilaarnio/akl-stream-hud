@@ -21,27 +21,25 @@ sock.on("message", function(data) {
       }
     } else if (data.phase_countdowns.phase == "over") {
       bombStartTime = undefined;
-      hideDefuseBar()
+      hideDefuseBar();
     } else if (data.phase_countdowns.phase == "freezetime") {
       timer.style.width = "0%";
     }
-    if (data.phase_countdowns.phase == "defuse" && defuseStartTime === undefined ) {
-        defuse.style.visibility = "visible";
-        defuseStartTime = data.phase_countdowns.phase_ends_in;
-        defuse.style.transition = "width " + defuseStartTime + "s linear"
-        defuse.style.width = "0%"
-    } 
-    else if (data.phase_countdowns.phase == "bomb" && defuseStartTime !== undefined) {
+    if (data.phase_countdowns.phase == "defuse" && defuseStartTime === undefined) {
+      defuse.style.visibility = "visible";
+      defuseStartTime = data.phase_countdowns.phase_ends_in;
+      defuse.style.transition = "width " + defuseStartTime + "s linear";
+      defuse.style.width = "0%";
+    } else if (data.phase_countdowns.phase == "bomb" && defuseStartTime !== undefined) {
       hideDefuseBar();
     }
   }
 });
 
-sock.on("textbox", function(data){
+sock.on("textbox", function(data) {
   console.log(data);
   document.getElementById(data.id).value = data.text;
 });
-
 
 function createBombTimer() {
   setInterval(function() {
