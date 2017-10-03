@@ -9,13 +9,20 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(bodyParser.json());
 
 io.on("connection", function(socket){
-  //console.log(socket);
+  socket.on("admin", function(data){
+    io.sockets.emit("textbox", data);
+  })
+  
 
 })
-
 app.get("/", function(req, res) {
-  //res.sendFile("/hud.html");
+  res.sendFile(__dirname + "/public/hud.html");
 })
+
+app.get("/admin", function(req, res){
+  res.sendFile(__dirname + "/public/admin.html")
+})
+
 app.post("*", function(req, res){
   res.sendStatus(200);
   //console.log(req.body);
