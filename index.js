@@ -27,6 +27,6 @@ app.post("*", function(req, res) {
   io.sockets.emit("message", req.body);
 });
 
-server.listen(3000, function() {
+server.listen(80, function() {
   //console.log("Listening at http://" + ":" + app.get("port") );
 });
